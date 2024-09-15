@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./SignUp.css";
 import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
+import { MyContext } from "./Context/MyContext";
 
 const SignUp = ({ children, openFormulario, closeRegister }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {user,setUser,password,setPassword} = useContext(MyContext);
   const [confirmpassword, setConfirmPassword] = useState("");
 
   const validacion = (event) => {
     event.preventDefault();
-    if (email === "" || password === "" || confirmpassword === "") {
+    if (user === "" || password === "" || confirmpassword === "") {
       alert("Email y/o Contraseña no fueron colocados");
       return false;
     }
@@ -54,7 +54,7 @@ const SignUp = ({ children, openFormulario, closeRegister }) => {
             type="email"
             placeholder="Correo"
             required
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setUser(event.target.value)}
           />
         </div>
         <div className="input-box">
@@ -78,7 +78,7 @@ const SignUp = ({ children, openFormulario, closeRegister }) => {
         </button>
         <div className="account-exist">
           <label>¿Ya tienes cuenta?</label>
-          <Link to="/HITO6_REACT/login">Iniciar Sesión</Link>
+          <Link to="/HITO7_REACT/login">Iniciar Sesión</Link>
         </div>
       </form>
       {children}

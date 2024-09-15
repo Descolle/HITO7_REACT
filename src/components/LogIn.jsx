@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./SignUp.css";
 import Swal from 'sweetalert2';
+import { MyContext } from "./Context/MyContext";
 
 const LogIn = ({ abierto, CloseLog }) => {
   const [usuario, setUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
+  const {user, password, token, setToken} = useContext(MyContext);
 
   const inicio = (event) => {
     event.preventDefault(); // Prevent default form submission behavior
