@@ -2,13 +2,12 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Pizzas from "./json/pizzas";
-import { useContext} from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./Context/CartContext";
 
 function CardPizza() {
-
-const {catchPizza} = useContext(CartContext)
+  const { catchPizza } = useContext(CartContext);
 
   return (
     <div className="pizzacontainer">
@@ -30,13 +29,12 @@ const {catchPizza} = useContext(CartContext)
             </ListGroup.Item>
           </ListGroup>
           <Card.Body>
-            <Link to="/HITO6_REACT/pizza/01"><Button variant="primary">👀Ver Más</Button>{" "}</Link>
-            <Button
-              variant="success"
-              onClick={() => catchPizza(pizza)}
-            >
+            <Link to={`/HITO7_REACT/pizza/${pizza.id}`}>
+              <Button variant="primary">👀 Ver Más</Button>
+            </Link>
+            <Button variant="success" onClick={() => catchPizza(pizza)}>
               🛒Añadir
-            </Button>{" "}
+            </Button>
           </Card.Body>
         </Card>
       ))}

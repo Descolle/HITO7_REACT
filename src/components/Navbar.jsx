@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import lockopen from "../assets/img/lockOpen.png";
 import lock from "../assets/img/lock.png";
 import SignUp from "./SignUp";
-import LogIn from './LogIn';
+import LogIn from "./LogIn";
 import { useSign } from "./hooks/useSign";
 import { useLogIn } from "./hooks/useLogIn";
 import { Link, useNavigate } from "react-router-dom";
@@ -31,13 +31,15 @@ function NavBar() {
         <Navbar.Brand>Pizzeria Mamma Mia!</Navbar.Brand>
         <Nav className="me-auto">
           <Button variant="outline-light" className="text-white">
-            <Link to="/HITO7_REACT/" className="zelda">🍕Home</Link>
+            <Link to="/HITO7_REACT/" className="zelda">
+              🍕Home
+            </Link>
           </Button>
-          <Button
-            variant="outline-light"
-            className="text-white"
-          >
-            <Link to={token ? "/HITO7_REACT/profile" : "/HITO7_REACT/register"} className="zelda">
+          <Button variant="outline-light" className="text-white">
+            <Link
+              to={token ? "/HITO7_REACT/profile" : "/HITO7_REACT/register"}
+              className="zelda"
+            >
               <img src={token ? lockopen : lock} alt="lock status" />
               {token ? "Profile" : "Register"}
             </Link>

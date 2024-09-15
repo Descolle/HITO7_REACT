@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import Pizzas from "../json/pizzas"
+import Pizzas from "../json/pizzas";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Pizza01 = () => {
-  const pizza = Pizzas[0];
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const pizza = Pizzas.find((p) => p.id === parseInt(id));
+
+  useEffect(() => {
+    if (!pizza) {
+      navigate("/HITO7_REACT/");
+    }
+  }, [pizza, navigate]);
 
   return (
     <div className="pizzacontainer d-flex justify-content-center align-items-center">
@@ -19,9 +28,7 @@ const Pizza01 = () => {
               <p key={i}>🍕{ingredient}</p>
             ))}
           </div>
-          <div>
-            {pizza.desc}
-          </div>
+          <div>{pizza.desc}</div>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
@@ -29,16 +36,13 @@ const Pizza01 = () => {
           </ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Button
-            variant="success"
-            onClick={() => catchPizza(pizza)}
-          >
-            🛒Añadir
-          </Button>{" "}
+          <Button variant="success" onClick={() => catchPizza(pizza)}>
+            🛒 Añadir
+          </Button>
         </Card.Body>
       </Card>
     </div>
   );
-}
+};
 
 export default Pizza01;
