@@ -11,7 +11,7 @@ const LogIn = ({ abierto, CloseLog }) => {
   const inicio = (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
-    if (contraseña.length > 6) {
+    if (contraseña === password && usuario === user) {
       Swal.fire({
         title: "Bienvenido",
         text: "Disfruta de nuestras pizzas hechas con amor",
@@ -20,10 +20,11 @@ const LogIn = ({ abierto, CloseLog }) => {
         imageHeight: 200,
         imageAlt: "Custom image"
       });
+      setToken(false);
     } else {
       Swal.fire({
         title: "Error",
-        text: "La contraseña debe tener más de 6 caracteres",
+        text: "Email y/o Contraseña no corresponde",
         icon: "error"
       });
     }
