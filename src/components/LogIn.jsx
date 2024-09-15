@@ -20,7 +20,7 @@ const LogIn = ({ abierto, CloseLog }) => {
         imageHeight: 200,
         imageAlt: "Custom image"
       });
-      setToken(false);
+      setToken(true);
     } else {
       Swal.fire({
         title: "Error",
