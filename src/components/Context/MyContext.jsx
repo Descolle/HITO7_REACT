@@ -4,7 +4,7 @@ import { createContext } from "react";
 export const MyContext = createContext();
 
 const MyProvider = ({ children }) => {
-  const [token, setToken] = useState("false");
+  const [token, setToken] = useState("true");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 

@@ -1,10 +1,10 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import CardPizza from "./CardPizza";
 import Button from "react-bootstrap/Button";
 import { CartContext } from "./Context/CartContext";
 
 function Cart() {
-  const { cart, setCart,countPizzas, setCountPizzas, total, setTotal,catchPizza,removePizza, clearCart } = useContext(CartContext)
+  const { cart, total, removePizza, clearCart } = useContext(CartContext);
 
   return (
     <div>
@@ -34,9 +34,11 @@ function Cart() {
       <Button variant="danger" onClick={clearCart} className="clear-all">
         Vaciar Carrito
       </Button>
+      <Button variant="success" className="clear-all">
+        Pagar
+      </Button>
     </div>
   );
 }
 
 export default Cart;
-
