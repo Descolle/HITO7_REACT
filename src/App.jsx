@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./components/Home";
 import CardPizza from "./components/CardPizza";
@@ -15,6 +15,7 @@ import MyProvider, { MyContext } from "./components/Context/MyContext";
 import { useContext } from "react";
 
 function App() {
+  const { token } = useContext(MyContext);
   return (
     <>
       <MyProvider>
@@ -27,7 +28,10 @@ function App() {
             <Route path="/HITO7_REACT/cart" element={<Cart />} />
             <Route path="/HITO7_REACT/login" element={<LogIn />} />
             <Route path="/HITO7_REACT/register" element={<SignUp />} />
-            <Route path="/HITO7_REACT/profile" element={<Profile />} />
+            <Route
+              path="/HITO7_REACT/profile"
+              element={token ? <Profile /> : <Navigate to="/login" />}
+            />
             <Route path="/HITO7_REACT/*" element={<NotFound />} />
           </Routes>
         </CartProvider>
