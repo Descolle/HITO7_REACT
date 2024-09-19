@@ -2,9 +2,11 @@ import { useContext } from "react";
 import CardPizza from "./CardPizza";
 import Button from "react-bootstrap/Button";
 import { CartContext } from "./Context/CartContext";
+import { MyContext } from "./Context/MyContext";
 
 function Cart() {
   const { cart, total, removePizza, clearCart } = useContext(CartContext);
+  const { token } = useContext(MyContext);
 
   return (
     <div>
@@ -34,9 +36,7 @@ function Cart() {
       <Button variant="danger" onClick={clearCart} className="clear-all">
         Vaciar Carrito
       </Button>
-      <Button variant="success" className="clear-all">
-        Pagar
-      </Button>
+      {token && <button className="btn btn-primary">Pagar</button>}
     </div>
   );
 }
